@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: educo-backend
+  namespace: argocd
+spec:
+  project: educo
+  source:
+    repoURL: git@github.com:continuum-consulting/kubernetes.git
+    targetRevision: HEAD
+    path: educo/backend/overlays/test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: educo
