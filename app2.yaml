@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vitae-backend
+  namespace: argocd
+spec:
+  project: vitae
+  source:
+    repoURL: git@github.com:continuum-consulting/kubernetes.git
+    targetRevision: HEAD
+    path: vitae/backend/overlays/test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vitae
